@@ -1,7 +1,7 @@
 // Google Sheets API Service
 export const submitFormData = async (payload) => {
   try {
-    await fetch("https://script.google.com/macros/s/AKfycbyP2Lmgj3NEwLj_YQpbZR8BDRLDaFp_iGwTGxWGtKKGYqdJE9pprDjrrFmeE2k2gAicEQ/exec", {
+    await fetch("https://script.google.com/macros/s/AKfycby6KYahKUHaYyodyfjho8gf6YoiMAYVE12CJg7nETCtgF-dlpAwx1bxzB1uHyeYAKZoTQ/exec", {
       method: "POST",
       mode: "no-cors",
       headers: {
