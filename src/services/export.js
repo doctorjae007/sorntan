@@ -1,27 +1,10 @@
 // Export utilities for CSV and PDF
-import khuhaLogo from "../assets/Khuha.jpg";
+import khuhaLogo from "../assets/Khuha.jpg?inline";
 
 const HTML2PDF_SRC = "https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js";
 
-const imageUrlToDataUrl = async (imageUrl) => {
-  const response = await fetch(imageUrl);
-
-  if (!response.ok) {
-    throw new Error("ไม่สามารถโหลดโลโก้โรงเรียนได้");
-  }
-
-  const imageBlob = await response.blob();
-
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = () => reject(new Error("ไม่สามารถอ่านไฟล์โลโก้โรงเรียนได้"));
-    reader.readAsDataURL(imageBlob);
-  });
-};
-
 export const exportToPDF = async (data, filename = "report.pdf") => {
-  const logoDataUrl = await imageUrlToDataUrl(khuhaLogo);
+  const logoDataUrl = khuhaLogo;
   const htmlContent = `
     <!DOCTYPE html>
     <html lang="th">
@@ -241,13 +224,17 @@ export const exportToPDF = async (data, filename = "report.pdf") => {
       <script>
         const logo = document.querySelector('.logo');
 
-        const createPdf = () => {
+        const createPdf = async () => {
+          if (logo.decode) {
+            await logo.decode();
+          }
+
           const element = document.getElementById('pdf-content');
           const opt = {
             margin: 10,
             filename: '${filename}',
             image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2 },
+            html2canvas: { scale: 2, useCORS: true, allowTaint: true },
             jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
           };
           html2pdf().set(opt).from(element).save();
