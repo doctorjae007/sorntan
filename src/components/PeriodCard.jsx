@@ -4,6 +4,7 @@ export default function PeriodCard({
   levelList, 
   subjectList, 
   teacherList, 
+  availabilityReady,
   onRemove, 
   onChange 
 }) {
@@ -85,6 +86,11 @@ export default function PeriodCard({
               <option key={i} value={t}>{t}</option>
             ))}
           </select>
+          <p className="mt-1 text-xs text-slate-500">
+            {availabilityReady
+              ? `พบครูว่าง ${teacherList.length} คน`
+              : "เลือกวันที่และคาบเพื่อค้นหาครูที่ว่าง"}
+          </p>
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import PeriodCard from "../components/PeriodCard";
 import ExportButton from "../components/ExportButton";
 import { submitFormData } from "../services/api";
+import { getAvailableTeachers } from "../data/teacherSchedules";
 
 export default function FormPage({ onSubmit }) {
   const teacherList = [
@@ -151,7 +152,13 @@ export default function FormPage({ onSubmit }) {
                 period={p}
                 levelList={levelList}
                 subjectList={subjectList}
-                teacherList={teacherList}
+                teacherList={getAvailableTeachers(
+                  teacherList,
+                  form.date,
+                  p.period,
+                  form.absentTeacher
+                )}
+                availabilityReady={Boolean(form.date && p.period)}
                 onRemove={removePeriod}
                 onChange={handleChange}
               />
