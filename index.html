@@ -7,6 +7,15 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      const sourceEntry = document.currentScript.nextElementSibling;
+      if (
+        location.hostname.endsWith("github.io") &&
+        sourceEntry?.getAttribute("src") === "/src/main.jsx"
+      ) {
+        location.replace(`/sorntan/docs/${location.search}${location.hash}`);
+      }
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
