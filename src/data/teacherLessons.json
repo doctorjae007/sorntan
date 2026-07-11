@@ -1,0 +1,1644 @@
+{
+  "คุณครูจันทร์จิรา": {
+    "monday": [
+      {
+        "period": 1,
+        "subject": "ภาษาไทย",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 2,
+        "subject": "ภาษาไทย",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 3,
+        "subject": "ภาษาไทย",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 5,
+        "subject": "การป้องกันการทุจริต",
+        "level": "ป.3/1"
+      }
+    ],
+    "tuesday": [
+      {
+        "period": 1,
+        "subject": "ภาษาไทย",
+        "level": "ม.1/1"
+      },
+      {
+        "period": 2,
+        "subject": "ภาษาไทย",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 3,
+        "subject": "ภาษาไทย",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมแนะแนว",
+        "level": "ม.3/1"
+      }
+    ],
+    "wednesday": [
+      {
+        "period": 2,
+        "subject": "ภาษาไทย",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 4,
+        "subject": "ภาษาไทย",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมชุมนุม",
+        "level": "ม.3/1"
+      }
+    ],
+    "thursday": [
+      {
+        "period": 1,
+        "subject": "กิจกรรมลูกเสือ เนตรนารี",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 2,
+        "subject": "ภาษาไทย",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 3,
+        "subject": "ภาษาไทย",
+        "level": "ม.1/1"
+      },
+      {
+        "period": 4,
+        "subject": "ภาษาไทย",
+        "level": "ม.3/1"
+      }
+    ],
+    "friday": [
+      {
+        "period": 1,
+        "subject": "ภาษาไทย",
+        "level": "ม.1/1"
+      },
+      {
+        "period": 3,
+        "subject": "ภาษาไทย",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 4,
+        "subject": "ภาษาไทย",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมสุดสัปดาห์",
+        "level": "ม.3/1"
+      }
+    ]
+  },
+  "คุณครูจีราพร": {
+    "monday": [
+      {
+        "period": 1,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 3,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 4,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 6,
+        "subject": "วิถีพอเพียง",
+        "level": "ป.6/1"
+      }
+    ],
+    "tuesday": [
+      {
+        "period": 2,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 3,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 4,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมแนะแนว",
+        "level": "ป.6/1"
+      }
+    ],
+    "wednesday": [
+      {
+        "period": 1,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 2,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 3,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 5,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมชุมนุม",
+        "level": "ป.6/1"
+      }
+    ],
+    "thursday": [
+      {
+        "period": 1,
+        "subject": "กิจกรรมลูกเสือเนตรนารี",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 5,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 6,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.4/1"
+      }
+    ],
+    "friday": [
+      {
+        "period": 1,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 3,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 4,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 5,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมสุดสัปดาห์",
+        "level": "ป.6/1"
+      }
+    ]
+  },
+  "คุณครูชวนพิศ": {
+    "monday": [
+      {
+        "period": 4,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ม.1/1"
+      },
+      {
+        "period": 5,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ม.1/1"
+      }
+    ],
+    "tuesday": [
+      {
+        "period": 1,
+        "subject": "สังคมศึกษา ศาสนาและวัฒนธรรม",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 4,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 5,
+        "subject": "การป้องกันการทุจริต",
+        "level": "ม.3/1"
+      }
+    ],
+    "wednesday": [
+      {
+        "period": 1,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 3,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ม.1/1"
+      },
+      {
+        "period": 4,
+        "subject": "สังคมศึกษา ศาสนาและวัฒนธรรม",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 5,
+        "subject": "สังคมศึกษา ศาสนาและวัฒนธรรม",
+        "level": "ป.1/1"
+      }
+    ],
+    "thursday": [
+      {
+        "period": 2,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 3,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 6,
+        "subject": "สังคมศึกษา ศาสนาและวัฒนธรรม",
+        "level": "ป.1/1"
+      }
+    ],
+    "friday": [
+      {
+        "period": 2,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 3,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ม.3/1"
+      }
+    ]
+  },
+  "คุณครูณฐกานต์": {
+    "monday": [
+      {
+        "period": 1,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ม.1/1"
+      },
+      {
+        "period": 3,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 4,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.5/1"
+      }
+    ],
+    "tuesday": [
+      {
+        "period": 1,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 3,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 4,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 5,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ม.1/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมแนะแนว",
+        "level": "ม.1/1"
+      }
+    ],
+    "wednesday": [
+      {
+        "period": 2,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 4,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 5,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมชุมชุม",
+        "level": "ม.1/1"
+      }
+    ],
+    "thursday": [
+      {
+        "period": 1,
+        "subject": "กิจกรรมลูกเสือ เนตรนารี",
+        "level": "ม.1/1"
+      },
+      {
+        "period": 2,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ม.1/1"
+      },
+      {
+        "period": 4,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.5/1"
+      }
+    ],
+    "friday": [
+      {
+        "period": 1,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 2,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 3,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 5,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมสุดสัปดาห์",
+        "level": "ม.1/1"
+      }
+    ]
+  },
+  "คุณครูธนพงษ์": {
+    "monday": [
+      {
+        "period": 1,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 3,
+        "subject": "คณิตศาสตร์",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 4,
+        "subject": "คณิตศาสตร์",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 5,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.2/1"
+      }
+    ],
+    "tuesday": [
+      {
+        "period": 4,
+        "subject": "คณิตศาสตร์",
+        "level": "ม.1/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมแนะแนว",
+        "level": "ม.2/1"
+      }
+    ],
+    "wednesday": [
+      {
+        "period": 1,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 3,
+        "subject": "คณิตศาสตร์",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 5,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมชุมนุม",
+        "level": "ม.2/1"
+      }
+    ],
+    "thursday": [
+      {
+        "period": 1,
+        "subject": "กิจกรรมลูกเสือ เนตรนารี",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 2,
+        "subject": "คณิตศาสตร์",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 3,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 4,
+        "subject": "คณิตศาสตร์",
+        "level": "ม.1/1"
+      }
+    ],
+    "friday": [
+      {
+        "period": 2,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 3,
+        "subject": "คณิตศาสตร์",
+        "level": "ม.1/1"
+      },
+      {
+        "period": 4,
+        "subject": "คณิตศาสตร์",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 5,
+        "subject": "คณิตศาสตร์",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมสุดสัปดาห์",
+        "level": "ม.2/1"
+      }
+    ]
+  },
+  "คุณครูธัญญลักษณ์": {
+    "monday": [
+      {
+        "period": 1,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 2,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 3,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.3/1"
+      },
+      {
+        "period": 6,
+        "subject": "วิถีพอเพียง",
+        "level": "ป.4/1"
+      }
+    ],
+    "tuesday": [
+      {
+        "period": 1,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ป.3/1"
+      },
+      {
+        "period": 2,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 3,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 5,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.3/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมแนะแนว",
+        "level": "ป.4/1"
+      }
+    ],
+    "wednesday": [
+      {
+        "period": 2,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 3,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 4,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.3/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมชุมนุม",
+        "level": "ป.4/1"
+      }
+    ],
+    "thursday": [
+      {
+        "period": 1,
+        "subject": "กิจกรรมลูกเสือเนตรนารี",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 2,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ป.3/1"
+      },
+      {
+        "period": 5,
+        "subject": "ประวัติศาสตร์",
+        "level": "ป.4/1"
+      }
+    ],
+    "friday": [
+      {
+        "period": 2,
+        "subject": "การป้องกันการทุจริต",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 4,
+        "subject": "การป้องกันการทุจริต",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมสุดสัปดาห์",
+        "level": "ป.4/1"
+      }
+    ]
+  },
+  "คุณครูธันยากร": {
+    "monday": [
+      {
+        "period": 1,
+        "subject": "ศิลปะ",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 2,
+        "subject": "ศิลปะ",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 4,
+        "subject": "ศิลปะ",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 5,
+        "subject": "ศิลปะ",
+        "level": "ม.2/1"
+      }
+    ],
+    "tuesday": [
+      {
+        "period": 1,
+        "subject": "ศิลปะ",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 3,
+        "subject": "ศิลปะ",
+        "level": "ม.1/1"
+      },
+      {
+        "period": 5,
+        "subject": "ศิลปะ",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมแนะแนว",
+        "level": "ม.2/1"
+      }
+    ],
+    "wednesday": [
+      {
+        "period": 1,
+        "subject": "ศิลปะ",
+        "level": "ม.1/1"
+      },
+      {
+        "period": 5,
+        "subject": "ศิลปะ",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมชุมนุม",
+        "level": "ม.2/1"
+      }
+    ],
+    "thursday": [
+      {
+        "period": 1,
+        "subject": "กิจกรรมลูกเสือ เนตรนารี",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 2,
+        "subject": "ศิลปะ",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 4,
+        "subject": "ศิลปะ",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 5,
+        "subject": "ศิลปะ",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 6,
+        "subject": "ศิลปะ",
+        "level": "ป.5/1"
+      }
+    ],
+    "friday": [
+      {
+        "period": 2,
+        "subject": "ศิลปะ",
+        "level": "ป.3/1"
+      },
+      {
+        "period": 5,
+        "subject": "ศิลปะ",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมสุดสัปดาห์",
+        "level": "ม.2/1"
+      }
+    ]
+  },
+  "คุณครูนัทลียา": {
+    "monday": [
+      {
+        "period": 1,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.3/1"
+      },
+      {
+        "period": 2,
+        "subject": "ประวัติศาสตร์",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 3,
+        "subject": "ภาษาไทย",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 4,
+        "subject": "ภาษาไทย",
+        "level": "ป.3/1"
+      },
+      {
+        "period": 6,
+        "subject": "วิถีพอเพียง",
+        "level": "ป.1/1"
+      }
+    ],
+    "tuesday": [
+      {
+        "period": 1,
+        "subject": "ภาษาไทย",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 2,
+        "subject": "ภาษาไทย",
+        "level": "ป.3/1"
+      },
+      {
+        "period": 4,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.3/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมแนะแนว",
+        "level": "ป.1/1"
+      }
+    ],
+    "wednesday": [
+      {
+        "period": 1,
+        "subject": "ภาษาไทย",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 2,
+        "subject": "ภาษาไทย",
+        "level": "ป.3/1"
+      },
+      {
+        "period": 3,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.3/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมชุมนุม",
+        "level": "ป.1/1"
+      }
+    ],
+    "thursday": [
+      {
+        "period": 1,
+        "subject": "กิจกรรมลูกเสือเนตรนารี",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 3,
+        "subject": "ภาษาไทย",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 4,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.3/1"
+      },
+      {
+        "period": 5,
+        "subject": "ภาษาไทย",
+        "level": "ป.3/1"
+      }
+    ],
+    "friday": [
+      {
+        "period": 1,
+        "subject": "ภาษาไทย",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 2,
+        "subject": "การป้องกันการทุจริต",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 3,
+        "subject": "ภาษาไทย",
+        "level": "ป.3/1"
+      },
+      {
+        "period": 4,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.3/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมสุดสัปดาห์",
+        "level": "ป.1/1"
+      }
+    ]
+  },
+  "คุณครูนุชรี": {
+    "monday": [
+      {
+        "period": 1,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 2,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 6,
+        "subject": "วิถีพอเพียง",
+        "level": "ป.4/1"
+      }
+    ],
+    "tuesday": [
+      {
+        "period": 1,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ป.3/1"
+      },
+      {
+        "period": 2,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 3,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมแนะแนว",
+        "level": "ป.4/1"
+      }
+    ],
+    "wednesday": [
+      {
+        "period": 2,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 3,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมชุมนุม",
+        "level": "ป.4/1"
+      }
+    ],
+    "thursday": [
+      {
+        "period": 1,
+        "subject": "กิจกรรมลูกเสือเนตรนารี",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 2,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ป.3/1"
+      }
+    ],
+    "friday": [
+      {
+        "period": 6,
+        "subject": "จกรรมสุดสัปดาห์",
+        "level": "ป.4/1"
+      }
+    ]
+  },
+  "คุณครูพงศพัฒน์": {
+    "monday": [
+      {
+        "period": 3,
+        "subject": "สุขศึกษาและพลศึกษา",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 4,
+        "subject": "สุขศึกษาและพลศึกษา",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 6,
+        "subject": "สุขศึกษาและพลศึกษา",
+        "level": "ม.3/1"
+      }
+    ],
+    "tuesday": [
+      {
+        "period": 3,
+        "subject": "สุขศึกษาและพลศึกษา",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมแนะแนว",
+        "level": "ม.3/1"
+      }
+    ],
+    "wednesday": [
+      {
+        "period": 3,
+        "subject": "สุขศึกษาและพลศึกษา",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 4,
+        "subject": "สุขศึกษาและพลศึกษา",
+        "level": "ม.1/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมชุมนุม",
+        "level": "ม.3/1"
+      }
+    ],
+    "thursday": [
+      {
+        "period": 1,
+        "subject": "กิจกรรมลูกเสือ เนตรนารี",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 4,
+        "subject": "สุขศึกษาและพลศึกษา",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 6,
+        "subject": "สุขศึกษาและพลศึกษา",
+        "level": "ป.6/1"
+      }
+    ],
+    "friday": [
+      {
+        "period": 1,
+        "subject": "สุขศึกษาและพลศึกษา",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 4,
+        "subject": "สุขศึกษาและพลศึกษา",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมสุดสัปดาห์",
+        "level": "ม.3/1"
+      }
+    ]
+  },
+  "คุณครูศศิวิมล": {
+    "monday": [
+      {
+        "period": 2,
+        "subject": "ภาษาไทย",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 4,
+        "subject": "ภาษาไทย",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 5,
+        "subject": "ประวัติศาสตร์",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 6,
+        "subject": "วิถีพอเพียง",
+        "level": "ป.5/1"
+      }
+    ],
+    "tuesday": [
+      {
+        "period": 2,
+        "subject": "ภาษาไทย",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 5,
+        "subject": "ภาษาไทย",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมแนะแนว",
+        "level": "ป.5/1"
+      }
+    ],
+    "wednesday": [
+      {
+        "period": 1,
+        "subject": "ภาษาไทย",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 2,
+        "subject": "ภาษาไทย",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 4,
+        "subject": "ภาษาไทย",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมชุมนุม",
+        "level": "ป.5/1"
+      }
+    ],
+    "thursday": [
+      {
+        "period": 1,
+        "subject": "กิจกรรมลูกเสือเนตรนารี",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 2,
+        "subject": "ภาษาไทย",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 3,
+        "subject": "ภาษาไทย",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 5,
+        "subject": "การป้องกันการทุจริต",
+        "level": "ป.5/1"
+      }
+    ],
+    "friday": [
+      {
+        "period": 1,
+        "subject": "ภาษาไทย",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 2,
+        "subject": "ภาษาไทย",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 3,
+        "subject": "ภาษาไทย",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมสุดสัปดาห์",
+        "level": "ป.5/1"
+      }
+    ]
+  },
+  "คุณครูสิรินันท์": {
+    "monday": [
+      {
+        "period": 1,
+        "subject": "คอมพิวเตอร์1",
+        "level": "อ.1/1"
+      },
+      {
+        "period": 5,
+        "subject": "วิทยาการคำนวณ/คอมพิวเตอร์",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 6,
+        "subject": "วิถีพอเพียง",
+        "level": "ป.6/1"
+      }
+    ],
+    "tuesday": [
+      {
+        "period": 1,
+        "subject": "คอมพิวเตอร์2",
+        "level": "อ.2/1"
+      },
+      {
+        "period": 2,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 4,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.2/1"
+      }
+    ],
+    "wednesday": [
+      {
+        "period": 2,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 3,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 4,
+        "subject": "สังคมศึกษา ศาสนาและวัฒนธรรม",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 5,
+        "subject": "วิทยาการคำนวณ/คอมพิวเตอร์",
+        "level": "ป.4/1"
+      }
+    ],
+    "thursday": [
+      {
+        "period": 1,
+        "subject": "เทคโนโลกิจกรรมลูกเสือเนตรนารี",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 2,
+        "subject": "วิทยาการคำนวณ/คอมพิวเตอร์",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 3,
+        "subject": "วิทยาการคำนวณ/คอมพิวเตอร์",
+        "level": "ป.3/1"
+      },
+      {
+        "period": 4,
+        "subject": "วิทยาการคำนวณ/คอมพิวเตอร์",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 5,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 6,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.3/1"
+      }
+    ],
+    "friday": [
+      {
+        "period": 1,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.3/1"
+      },
+      {
+        "period": 2,
+        "subject": "วิทยาการคำนวณ/คอมพิวเตอร์",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 4,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 5,
+        "subject": "สังคมศึกษา ศาสนาและวัฒนธรรม",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมสุดสัปดาห์",
+        "level": "ป.6/1"
+      }
+    ]
+  },
+  "คุณครูสุนิดา": {
+    "monday": [
+      {
+        "period": 2,
+        "subject": "วิทยาการคำนวณ/คอมพิวเตอร์",
+        "level": "ม.1/1"
+      },
+      {
+        "period": 3,
+        "subject": "วิทยาการคำนวณ/คอมพิวเตอร์",
+        "level": "ม.1/1"
+      },
+      {
+        "period": 4,
+        "subject": "ประวัติศาสตร์",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 6,
+        "subject": "วิถีพอเพียง",
+        "level": "ป.3/1"
+      }
+    ],
+    "tuesday": [
+      {
+        "period": 2,
+        "subject": "ประวัติศาสตร์",
+        "level": "ป.1/1"
+      }
+    ],
+    "wednesday": [
+      {
+        "period": 2,
+        "subject": "วิทยาการคำนวณ/คอมพิวเตอร์",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 3,
+        "subject": "วิทยาการคำนวณ/คอมพิวเตอร์",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 5,
+        "subject": "การป้องกันการทุจริต",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมแนะแนว",
+        "level": "ป.3/1"
+      }
+    ],
+    "thursday": [
+      {
+        "period": 3,
+        "subject": "สังคมศึกษา ศาสนาและวัฒนธรรม",
+        "level": "ป.3/1"
+      }
+    ],
+    "friday": [
+      {
+        "period": 1,
+        "subject": "ประวัติศาสตร์",
+        "level": "ป.3/1"
+      },
+      {
+        "period": 2,
+        "subject": "วิทยาการคำนวณ/คอมพิวเตอร์",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 3,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 5,
+        "subject": "สังคมศึกษา ศาสนาและวัฒนธรรม",
+        "level": "ป.3/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมชุมนุม",
+        "level": "ป.3/1"
+      }
+    ]
+  },
+  "คุณครูสุไหวย๊ะ": {
+    "monday": [
+      {
+        "period": 1,
+        "subject": "ประวัติศาสตร์",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 2,
+        "subject": "ประวัติศาสตร์",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 5,
+        "subject": "สังคมศึกษา ศาสนาและวัฒนธรรม",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 6,
+        "subject": "สังคมศึกษา ศาสนาและวัฒนธรรม",
+        "level": "ม.1/1"
+      }
+    ],
+    "tuesday": [
+      {
+        "period": 6,
+        "subject": "วิถีพอเพียง",
+        "level": "ป.2/1"
+      }
+    ],
+    "wednesday": [
+      {
+        "period": 1,
+        "subject": "ประวัติศาสตร์",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 2,
+        "subject": "สังคมศึกษา ศาสนาและวัฒนธรรม",
+        "level": "ม.1/1"
+      },
+      {
+        "period": 4,
+        "subject": "สังคมศึกษา ศาสนาและวัฒนธรรม",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 5,
+        "subject": "สังคมศึกษา ศาสนาและวัฒนธรรม",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมแนะแนว",
+        "level": "ป.2/1"
+      }
+    ],
+    "thursday": [
+      {
+        "period": 1,
+        "subject": "สังคมศึกษา ศาสนาและวัฒนธรรม",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 4,
+        "subject": "สังคมศึกษา ศาสนาและวัฒนธรรม",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 5,
+        "subject": "สังคมศึกษา ศาสนาและวัฒนธรรม",
+        "level": "ม.1/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมชุมนม",
+        "level": "ป.2/1"
+      }
+    ],
+    "friday": [
+      {
+        "period": 1,
+        "subject": "กิจกรรมลูกเสือเนตรนารี",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 3,
+        "subject": "สังคมศึกษา ศาสนาและวัฒนธรรม",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 4,
+        "subject": "สังคมศึกษา ศาสนาและวัฒนธรรม",
+        "level": "ม.2/1"
+      }
+    ]
+  },
+  "คุณครูอรุณี": {
+    "monday": [
+      {
+        "period": 2,
+        "subject": "การงานอาชีพ",
+        "level": "ป.3/1"
+      },
+      {
+        "period": 3,
+        "subject": "สังคมศึกษา ศาสนาและวัฒนธรรม",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 5,
+        "subject": "การงานอาชีพ",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 6,
+        "subject": "การงานอาชีพ",
+        "level": "ม.2/1"
+      }
+    ],
+    "tuesday": [
+      {
+        "period": 1,
+        "subject": "การงานอาชีพ",
+        "level": "ม.3/1"
+      },
+      {
+        "period": 4,
+        "subject": "การงานอาชีพ",
+        "level": "ป.4/1"
+      },
+      {
+        "period": 5,
+        "subject": "การงานอาชีพ",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมแนะแนว",
+        "level": "ม.1/1"
+      }
+    ],
+    "wednesday": [
+      {
+        "period": 2,
+        "subject": "การงานอาชีพ",
+        "level": "ม.1/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมชุมชุม",
+        "level": "ม.1/1"
+      }
+    ],
+    "thursday": [
+      {
+        "period": 1,
+        "subject": "กิจกรรมลูกเสือ เนตรนารี",
+        "level": "ม.1/1"
+      },
+      {
+        "period": 3,
+        "subject": "สังคมศึกษา ศาสนาและวัฒนธรรม",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 4,
+        "subject": "การงานอาชีพ",
+        "level": "ป.6/1"
+      },
+      {
+        "period": 5,
+        "subject": "ภาษาอังกฤษ",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 6,
+        "subject": "การงานอาชีพ",
+        "level": "ป.2/1"
+      }
+    ],
+    "friday": [
+      {
+        "period": 1,
+        "subject": "การป้องกันการทุจริต",
+        "level": "ม.2/1"
+      },
+      {
+        "period": 2,
+        "subject": "การป้องกันการทุจริต",
+        "level": "ม.1/1"
+      },
+      {
+        "period": 5,
+        "subject": "การงานอาชีพ",
+        "level": "ป.5/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมสุดสัปดาห์",
+        "level": "ม.1/1"
+      }
+    ]
+  },
+  "คุณครูโอวาท": {
+    "monday": [
+      {
+        "period": 1,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 2,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 6,
+        "subject": "วิถีพอเพียง",
+        "level": "ป.2/1"
+      }
+    ],
+    "tuesday": [
+      {
+        "period": 1,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 2,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 3,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 4,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมแนะแนว",
+        "level": "ป.2/1"
+      }
+    ],
+    "wednesday": [
+      {
+        "period": 1,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 3,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 4,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมชุมนม",
+        "level": "ป.2/1"
+      }
+    ],
+    "thursday": [
+      {
+        "period": 1,
+        "subject": "กิจกรรมลูกเสือเนตรนารี",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 2,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 3,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.2/1"
+      }
+    ],
+    "friday": [
+      {
+        "period": 1,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 3,
+        "subject": "คณิตศาสตร์",
+        "level": "ป.1/1"
+      },
+      {
+        "period": 4,
+        "subject": "วิทยาศาสตร์และเทคโนโลยี",
+        "level": "ป.2/1"
+      },
+      {
+        "period": 6,
+        "subject": "กิจกรรมสุดสัปดาห์",
+        "level": "ป.2/1"
+      }
+    ]
+  }
+}

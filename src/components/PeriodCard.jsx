@@ -50,6 +50,9 @@ export default function PeriodCard({
             className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:border-slate-700 focus:ring-2 focus:ring-slate-200 transition bg-white text-sm"
           >
             <option value="">-- เลือก --</option>
+            {period.level && !levelList.includes(period.level) && (
+              <option value={period.level}>{period.level}</option>
+            )}
             {levelList.map((l, i) => (
               <option key={i} value={l}>{l}</option>
             ))}
@@ -66,6 +69,9 @@ export default function PeriodCard({
             className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:border-slate-700 focus:ring-2 focus:ring-slate-200 transition bg-white text-sm"
           >
             <option value="">-- เลือก --</option>
+            {period.subject && !subjectList.includes(period.subject) && (
+              <option value={period.subject}>{period.subject}</option>
+            )}
             {subjectList.map((s, i) => (
               <option key={i} value={s}>{s}</option>
             ))}

@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import PeriodCard from "../components/PeriodCard";
 import ExportButton from "../components/ExportButton";
 import { submitFormData } from "../services/api";
-import { getAvailableTeachers } from "../data/teacherSchedules";
+import { getAvailableTeachers, getTeacherLessons } from "../data/teacherSchedules";
 
 export default function FormPage({ onSubmit }) {
   const teacherList = [
@@ -43,7 +43,18 @@ export default function FormPage({ onSubmit }) {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFormChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const nextForm = { ...form, [e.target.name]: e.target.value };
+    setForm(nextForm);
+    if (nextForm.date && nextForm.absentTeacher) {
+      setPeriods(
+        getTeacherLessons(nextForm.absentTeacher, nextForm.date).map((lesson) => ({
+          period: String(lesson.period),
+          level: lesson.level.replace(/\/\d+$/, ""),
+          subject: lesson.subject,
+          substituteTeacher: "",
+        }))
+      );
+    }
   };
 
   const addPeriod = () => {
