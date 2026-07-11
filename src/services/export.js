@@ -4,7 +4,6 @@ import khuhaLogo from "../assets/Khuha.jpg?inline";
 const HTML2PDF_SRC = "https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js";
 
 export const exportToPDF = async (data, filename = "report.pdf") => {
-  const logoDataUrl = khuhaLogo;
   const htmlContent = `
     <!DOCTYPE html>
     <html lang="th">
@@ -40,15 +39,6 @@ export const exportToPDF = async (data, filename = "report.pdf") => {
           margin-bottom: 20px;
           border-bottom: 2px solid #000;
           padding-bottom: 15px;
-        }
-        
-        .logo {
-          width: auto;
-          height: 72px;
-          max-width: 110px;
-          object-fit: contain;
-          margin: 0 auto 12px;
-          display: block;
         }
         
         .school-name {
@@ -154,7 +144,6 @@ export const exportToPDF = async (data, filename = "report.pdf") => {
     <body>
       <div class="container" id="pdf-content">
         <div class="header">
-            <img src="${logoDataUrl}" alt="โลโก้โรงเรียนบ้านคูหา" class="logo" />
           <div class="school-name">บันทึกการสอนแทนครูที่ปฏิบัติราชการ/ไม่มาปฏิบัติราชการ</div>
           <div class="school-name">โรงเรียนบ้านคูหา</div>
           <div class="form-title">ตารางการสอนแทน</div>
@@ -224,13 +213,7 @@ export const exportToPDF = async (data, filename = "report.pdf") => {
       </div>
 
       <script>
-        const logo = document.querySelector('.logo');
-
         const createPdf = async () => {
-          if (logo.decode) {
-            await logo.decode();
-          }
-
           const element = document.getElementById('pdf-content');
           const opt = {
             margin: 10,
@@ -242,11 +225,7 @@ export const exportToPDF = async (data, filename = "report.pdf") => {
           html2pdf().set(opt).from(element).save();
         };
 
-        if (logo.complete) {
-          createPdf();
-        } else {
-          logo.addEventListener('load', createPdf, { once: true });
-        }
+        createPdf();
       </script>
     </body>
     </html>
