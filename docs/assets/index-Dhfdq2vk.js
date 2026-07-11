@@ -44,9 +44,11 @@ Error generating stack: `+e.message+`
         }
         
         .logo {
-          width: 40px;
-          height: 40px;
-          margin: 0 auto 10px;
+          width: auto;
+          height: 72px;
+          max-width: 110px;
+          object-fit: contain;
+          margin: 0 auto 12px;
           display: block;
         }
         
