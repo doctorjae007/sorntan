@@ -45,7 +45,7 @@ function saveSubstitution_(data) {
         success: false,
         code: "SUBSTITUTE_CONFLICT",
         conflicts: conflicts,
-        message: "พบรายการที่อาจซ้ำ: " + conflicts.map(function (item) {
+        message: "พบครูสอนแทนซ้ำในวันที่ " + data.date + ": " + conflicts.map(function (item) {
           return item.teacher + " ถูกจัดสอนแทนแล้วในคาบ " + item.period;
         }).join(", ")
       };
@@ -89,7 +89,13 @@ function findConflicts_(sheet, incoming) {
 }
 
 function assignmentKey_(period) {
-  return normalize_(period.period) + "|" + normalize_(period.substituteTeacher);
+  return normalizePeriod_(period.period) + "|" + normalize_(period.substituteTeacher);
+}
+
+function normalizePeriod_(value) {
+  const text = normalize_(value);
+  const number = text.match(/\d+/);
+  return number ? String(Number(number[0])) : text;
 }
 
 function normalize_(value) {
