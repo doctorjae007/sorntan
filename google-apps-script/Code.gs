@@ -4,6 +4,9 @@ const SHEET_NAME = "Sheet1";
 function doGet(e) {
   const callback = sanitizeCallback_(e.parameter.callback);
   try {
+    if (e.parameter.action === "listAssignments") {
+      return javascriptResponse_(callback, listAssignments_(e.parameter.date));
+    }
     const data = parseGetPayload_(e.parameter);
     return javascriptResponse_(callback, saveSubstitution_(data));
   } catch (err) {
@@ -39,18 +42,6 @@ function saveSubstitution_(data) {
     const sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName(SHEET_NAME);
     if (!sheet) throw new Error("Sheet not found: " + SHEET_NAME);
 
-    const conflicts = findConflicts_(sheet, data);
-    if (conflicts.length && !data.allowConflicts) {
-      return {
-        success: false,
-        code: "SUBSTITUTE_CONFLICT",
-        conflicts: conflicts,
-        message: "พบครูสอนแทนซ้ำในวันที่ " + data.date + ": " + conflicts.map(function (item) {
-          return item.teacher + " ถูกจัดสอนแทนแล้วในคาบ " + item.period;
-        }).join(", ")
-      };
-    }
-
     sendLineMessage_(createLineMessage_(data));
     sheet.appendRow([new Date(), JSON.stringify(data)]);
     return { success: true, message: "ส่งข้อมูลเรียบร้อยแล้ว" };
@@ -59,16 +50,27 @@ function saveSubstitution_(data) {
   }
 }
 
-function findConflicts_(sheet, incoming) {
-  const existingKeys = {};
+function listAssignments_(date) {
+  if (!date) return { success: true, assignments: [] };
+
+  const sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName(SHEET_NAME);
+  if (!sheet) throw new Error("Sheet not found: " + SHEET_NAME);
+
+  const assignments = [];
   const lastRow = sheet.getLastRow();
   if (lastRow >= 1) {
     sheet.getRange(1, 2, lastRow, 1).getDisplayValues().forEach(function (row) {
       try {
         const saved = JSON.parse(row[0]);
-        if (normalize_(saved.date) !== normalize_(incoming.date)) return;
+        if (normalize_(saved.date) !== normalize_(date)) return;
         (saved.periods || []).forEach(function (period) {
-          existingKeys[assignmentKey_(period)] = true;
+          assignments.push({
+            teacher: period.substituteTeacher || "-",
+            period: period.period || "-",
+            level: period.level || "-",
+            subject: period.subject || "-",
+            absentTeacher: saved.absentTeacher || "-"
+          });
         });
       } catch (err) {
         console.warn("Skipped invalid JSON row: " + err);
@@ -76,20 +78,10 @@ function findConflicts_(sheet, incoming) {
     });
   }
 
-  const seen = {};
-  const conflicts = [];
-  (incoming.periods || []).forEach(function (period) {
-    const key = assignmentKey_(period);
-    if (existingKeys[key] || seen[key]) {
-      conflicts.push({ teacher: String(period.substituteTeacher).trim(), period: String(period.period).trim() });
-    }
-    seen[key] = true;
+  assignments.sort(function (a, b) {
+    return Number(normalizePeriod_(a.period)) - Number(normalizePeriod_(b.period));
   });
-  return conflicts;
-}
-
-function assignmentKey_(period) {
-  return normalizePeriod_(period.period) + "|" + normalize_(period.substituteTeacher);
+  return { success: true, assignments: assignments };
 }
 
 function normalizePeriod_(value) {
