@@ -4,12 +4,20 @@ const SHEET_NAME = "Sheet1";
 function doGet(e) {
   const callback = sanitizeCallback_(e.parameter.callback);
   try {
-    const data = JSON.parse(e.parameter.payload || "{}");
+    const data = parseGetPayload_(e.parameter);
     return javascriptResponse_(callback, saveSubstitution_(data));
   } catch (err) {
     console.error(err);
     return javascriptResponse_(callback, { success: false, message: "ข้อมูลไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง" });
   }
+}
+
+function parseGetPayload_(parameters) {
+  if (parameters.payloadBase64) {
+    const bytes = Utilities.base64DecodeWebSafe(parameters.payloadBase64);
+    return JSON.parse(Utilities.newBlob(bytes).getDataAsString("UTF-8"));
+  }
+  return JSON.parse(parameters.payload || "{}");
 }
 
 function doPost(e) {

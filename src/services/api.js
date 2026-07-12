@@ -1,4 +1,14 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbxc8CDBpsQP01d2x0GXs0iMb1kOMSEyFY6DRo0S8JNxmZ7mULOJ_YOwZcFjimxGoh1U/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbwmtnp8GWYIKJ5kWWR5nQQJDMSDlH_PWoKVMU_mIywF_yFX-jy8EOhoqBwEx0RN6-vmMw/exec";
+
+const encodePayload = (payload) => {
+  const bytes = new TextEncoder().encode(JSON.stringify(payload));
+  let binary = "";
+  bytes.forEach((byte) => { binary += String.fromCharCode(byte); });
+  return window.btoa(binary)
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/, "");
+};
 
 // JSONP is used because a Google Apps Script no-cors response cannot be read
 // by the browser, while this screen needs the conflict result before moving on.
@@ -29,7 +39,7 @@ export const submitFormData = (payload) => new Promise((resolve) => {
 
   const params = new URLSearchParams({
     callback: callbackName,
-    payload: JSON.stringify(payload)
+    payloadBase64: encodePayload(payload)
   });
   script.src = `${API_URL}?${params.toString()}`;
   document.head.appendChild(script);
