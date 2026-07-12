@@ -78,7 +78,21 @@ export default function FormPage({ onSubmit }) {
     };
 
     setIsLoading(true);
-    const result = await submitFormData(payload);
+    let result = await submitFormData(payload);
+
+    if (result.code === "SUBSTITUTE_CONFLICT") {
+      const shouldContinue = window.confirm(
+        `${result.message}\n\nต้องการบันทึกรายการนี้ต่อหรือไม่?`
+      );
+
+      if (shouldContinue) {
+        result = await submitFormData({ ...payload, allowConflicts: true });
+      } else {
+        setIsLoading(false);
+        return;
+      }
+    }
+
     setIsLoading(false);
 
     alert(result.message);

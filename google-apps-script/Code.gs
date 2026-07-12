@@ -40,12 +40,12 @@ function saveSubstitution_(data) {
     if (!sheet) throw new Error("Sheet not found: " + SHEET_NAME);
 
     const conflicts = findConflicts_(sheet, data);
-    if (conflicts.length) {
+    if (conflicts.length && !data.allowConflicts) {
       return {
         success: false,
         code: "SUBSTITUTE_CONFLICT",
         conflicts: conflicts,
-        message: "บันทึกไม่ได้: " + conflicts.map(function (item) {
+        message: "พบรายการที่อาจซ้ำ: " + conflicts.map(function (item) {
           return item.teacher + " ถูกจัดสอนแทนแล้วในคาบ " + item.period;
         }).join(", ")
       };
