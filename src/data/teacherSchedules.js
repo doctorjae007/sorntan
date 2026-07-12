@@ -25,6 +25,13 @@ export function getTeacherLessons(teacher, date) {
   return teacherLessons[teacher]?.[day] ?? [];
 }
 
+export function isTeacherScheduled(teacher, date, periodValue) {
+  const period = Number(String(periodValue).match(/\d+/)?.[0]);
+  const day = getDayKey(date);
+  if (!teacher || !day || !period) return false;
+  return (teacherSchedules[teacher]?.[day] ?? []).includes(period);
+}
+
 export function getAvailableTeachers(teacherList, date, periodValue, absentTeacher) {
   const period = Number(String(periodValue).match(/\d+/)?.[0]);
   if (!date || !period) return teacherList.filter((teacher) => teacher !== absentTeacher);

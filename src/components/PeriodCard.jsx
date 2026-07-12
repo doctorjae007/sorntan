@@ -5,6 +5,7 @@ export default function PeriodCard({
   subjectList, 
   teacherList, 
   availabilityReady,
+  thanaphongIsScheduled,
   onRemove, 
   onChange 
 }) {
@@ -36,7 +37,11 @@ export default function PeriodCard({
             value={period.period} 
             onChange={(e) => onChange(index, e)}
             placeholder="เช่น คาบ 1, คาบ 2"
-            className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:border-slate-700 focus:ring-2 focus:ring-slate-200 transition bg-white text-sm"
+            className={`w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:border-slate-700 focus:ring-2 focus:ring-slate-200 transition bg-white text-sm ${
+              period.substituteTeacher === "คุณครูธนพงษ์" && thanaphongIsScheduled
+                ? "text-green-600 font-semibold"
+                : "text-black"
+            }`}
           />
         </div>
 
@@ -89,7 +94,17 @@ export default function PeriodCard({
           >
             <option value="">-- เลือก --</option>
             {teacherList.map((t, i) => (
-              <option key={i} value={t}>{t}</option>
+              <option
+                key={i}
+                value={t}
+                className={
+                  t === "คุณครูธนพงษ์" && thanaphongIsScheduled
+                    ? "text-green-600 font-semibold"
+                    : "text-black"
+                }
+              >
+                {t}
+              </option>
             ))}
           </select>
           <p className="mt-1 text-xs text-slate-500">

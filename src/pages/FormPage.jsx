@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import PeriodCard from "../components/PeriodCard";
 import ExportButton from "../components/ExportButton";
 import { getSubstituteAssignments, submitFormData } from "../services/api";
-import { getAvailableTeachers, getTeacherLessons } from "../data/teacherSchedules";
+import { getAvailableTeachers, getTeacherLessons, isTeacherScheduled } from "../data/teacherSchedules";
 
 export default function FormPage({ onSubmit }) {
   const teacherList = [
@@ -243,6 +243,11 @@ export default function FormPage({ onSubmit }) {
                   form.absentTeacher
                 )}
                 availabilityReady={Boolean(form.date && p.period)}
+                thanaphongIsScheduled={isTeacherScheduled(
+                  "คุณครูธนพงษ์",
+                  form.date,
+                  p.period
+                )}
                 onRemove={removePeriod}
                 onChange={handleChange}
               />
