@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbyjTMoTMsuZwepahR0Etc_C0x3BMyskBlQYe6_2PrP4oPl4xtF_u7jFXvbPL88hojSp9g/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbxc8CDBpsQP01d2x0GXs0iMb1kOMSEyFY6DRo0S8JNxmZ7mULOJ_YOwZcFjimxGoh1U/exec";
 
 // JSONP is used because a Google Apps Script no-cors response cannot be read
 // by the browser, while this screen needs the conflict result before moving on.
