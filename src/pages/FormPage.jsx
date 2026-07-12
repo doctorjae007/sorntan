@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { toBlob } from "html-to-image";
 import Header from "../components/Header";
 import PeriodCard from "../components/PeriodCard";
 import ExportButton from "../components/ExportButton";
@@ -43,6 +44,8 @@ export default function FormPage({ onSubmit }) {
   const [isLoading, setIsLoading] = useState(false);
   const [assignments, setAssignments] = useState([]);
   const [isAssignmentsLoading, setIsAssignmentsLoading] = useState(false);
+  const [isSharing, setIsSharing] = useState(false);
+  const shareCardRef = useRef(null);
 
   const assignmentsByTeacher = useMemo(() => {
     const grouped = new Map();
@@ -127,6 +130,45 @@ export default function FormPage({ onSubmit }) {
       onSubmit(payload);
       setForm({ date: "", absentTeacher: "" });
       setPeriods([]);
+    }
+  };
+
+  const handleShareCard = async () => {
+    if (!shareCardRef.current || !form.date || assignmentsByTeacher.length === 0) return;
+
+    setIsSharing(true);
+    try {
+      const blob = await toBlob(shareCardRef.current, {
+        backgroundColor: "#ffffff",
+        cacheBust: true,
+        pixelRatio: 2,
+      });
+      if (!blob) throw new Error("Unable to create image");
+
+      const filename = `substitute-teachers-${form.date}.png`;
+      const file = new File([blob], filename, { type: "image/png" });
+
+      if (navigator.share && navigator.canShare?.({ files: [file] })) {
+        await navigator.share({
+          title: `สรุปการจัดครูสอนแทน ${form.date}`,
+          text: `สรุปการจัดครูสอนแทน วันที่ ${form.date}`,
+          files: [file],
+        });
+      } else {
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = filename;
+        link.click();
+        URL.revokeObjectURL(url);
+      }
+    } catch (error) {
+      if (error?.name !== "AbortError") {
+        console.error("Share card error:", error);
+        alert("ไม่สามารถสร้างรูปสำหรับแชร์ได้ กรุณาลองใหม่อีกครั้ง");
+      }
+    } finally {
+      setIsSharing(false);
     }
   };
 
@@ -264,47 +306,91 @@ export default function FormPage({ onSubmit }) {
 
           </main>
 
-          <aside className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm lg:sticky lg:top-6">
-            <div className="flex items-center justify-between gap-3 border-b border-slate-200 pb-3">
-              <h2 className="font-bold text-slate-800">ครูที่สอนแทนวันนี้</h2>
-              {form.date && <span className="text-xs text-slate-500">{form.date}</span>}
+          <aside className="overflow-hidden rounded-lg border border-slate-300 bg-white shadow-sm lg:sticky lg:top-6">
+            <div ref={shareCardRef} className="bg-white">
+            <div className="border-b border-slate-700 bg-slate-800 px-5 py-5 text-white">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="text-xs font-medium text-slate-300">
+                    สรุปการจัดครูสอนแทน
+                  </p>
+                  <h2 className="mt-1 text-lg font-bold">ครูที่สอนแทนวันนี้</h2>
+                </div>
+                <span className="rounded-md border border-slate-500 px-2.5 py-1 text-xs font-semibold text-slate-200">ประจำวัน</span>
+              </div>
+              {form.date && (
+                <div className="mt-4 flex items-center justify-between border-t border-slate-600 pt-3">
+                  <span className="text-xs text-slate-300">วันที่จัดสอนแทน</span>
+                  <span className="text-sm font-bold">{form.date}</span>
+                </div>
+              )}
             </div>
 
+            <div className="p-4">
             {!form.date ? (
-              <p className="py-6 text-center text-sm text-slate-500">เลือกวันที่เพื่อดูรายการ</p>
+              <div className="rounded-md border border-dashed border-slate-300 bg-slate-50 px-4 py-8 text-center">
+                <p className="text-sm font-medium text-slate-600">กรุณาเลือกวันที่เพื่อดูรายการ</p>
+              </div>
             ) : isAssignmentsLoading ? (
-              <p className="py-6 text-center text-sm text-slate-500">กำลังโหลดข้อมูล...</p>
+              <div className="py-8 text-center text-sm text-slate-500">
+                <span>กำลังโหลดข้อมูล...</span>
+              </div>
             ) : assignmentsByTeacher.length === 0 ? (
-              <p className="py-6 text-center text-sm text-slate-500">ยังไม่มีครูที่ถูกจัดสอนแทนในวันนี้</p>
+              <div className="rounded-md border border-dashed border-slate-300 bg-slate-50 px-4 py-7 text-center">
+                <p className="text-sm font-medium text-slate-600">ยังไม่มีครูที่ถูกจัดสอนแทนในวันนี้</p>
+              </div>
             ) : (
-              <div className="mt-4 space-y-3">
-                {assignmentsByTeacher.map((item, index) => (
+              <div className="space-y-3">
+                <div className="flex items-center justify-between px-1 pb-1">
+                  <span className="text-xs font-semibold text-slate-500">รายชื่อที่จัดแล้ว</span>
+                  <span className="rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-bold text-slate-700">
+                    {assignmentsByTeacher.length} คน
+                  </span>
+                </div>
+                {assignmentsByTeacher.map((item) => (
                   <div
                     key={item.teacher}
-                    className={`rounded-xl border p-3 ${
-                      index % 3 === 0
-                        ? "border-sky-200 bg-sky-50"
-                        : index % 3 === 1
-                          ? "border-emerald-200 bg-emerald-50"
-                          : "border-amber-200 bg-amber-50"
-                    }`}
+                    className="relative overflow-hidden rounded-md border border-slate-200 bg-white p-4"
                   >
-                    <p className="font-bold text-slate-800">🧑‍🏫 {item.teacher}</p>
-                    <p className="mt-1 text-sm text-slate-600">
+                    <div className="absolute inset-y-0 left-0 w-1 bg-slate-700" />
+                    <p className="flex items-center gap-2 font-bold text-slate-800">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-md bg-slate-100 text-base">🧑‍🏫</span>
+                      {item.teacher}
+                    </p>
+                    <div className="mt-3 flex flex-wrap gap-1.5">
                       {item.assignments.map((assignment) => (
                         <span
                           key={`${assignment.period}-${assignment.level}`}
-                          className="mr-2 inline-block"
+                          className="inline-flex items-center gap-1 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-xs text-slate-600"
                         >
-                          คาบที่ <span className="font-bold">{assignment.period}</span>{" "}
-                          <span className="font-bold">{assignment.level}</span>
+                          <span>คาบที่</span>
+                          <span className="font-extrabold text-slate-800">{assignment.period}</span>
+                          <span className="text-slate-300">•</span>
+                          <span className="font-bold text-slate-700">{assignment.level}</span>
                         </span>
                       ))}
-                    </p>
+                    </div>
                   </div>
                 ))}
               </div>
             )}
+            </div>
+            </div>
+
+            <div className="border-t border-slate-200 bg-slate-50 p-4">
+              <button
+                type="button"
+                onClick={handleShareCard}
+                disabled={!form.date || assignmentsByTeacher.length === 0 || isSharing}
+                className="flex w-full items-center justify-center gap-2 rounded-md bg-slate-800 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-slate-900 disabled:cursor-not-allowed disabled:bg-slate-300"
+              >
+                <span aria-hidden="true">↗</span>
+                {isSharing ? "กำลังสร้างรูป..." : "แชร์การ์ดสรุป"}
+              </button>
+              <p className="mt-2 text-center text-xs text-slate-500">
+                หากอุปกรณ์ไม่รองรับการแชร์ ระบบจะบันทึกเป็นไฟล์ PNG
+              </p>
+            </div>
           </aside>
         </div>
 
