@@ -90,6 +90,12 @@ export default function PeriodCard({
             name="substituteTeacher" 
             value={period.substituteTeacher} 
             onChange={(e) => onChange(index, e)}
+            style={{
+              color:
+                period.substituteTeacher === "คุณครูธนพงษ์" && thanaphongIsScheduled
+                  ? "#16a34a"
+                  : "#000000",
+            }}
             className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:border-slate-700 focus:ring-2 focus:ring-slate-200 transition bg-white text-sm"
           >
             <option value="">-- เลือก --</option>
@@ -97,6 +103,12 @@ export default function PeriodCard({
               <option
                 key={i}
                 value={t}
+                style={{
+                  color:
+                    t === "คุณครูธนพงษ์" && thanaphongIsScheduled
+                      ? "#16a34a"
+                      : "#000000",
+                }}
                 className={
                   t === "คุณครูธนพงษ์" && thanaphongIsScheduled
                     ? "text-green-600 font-semibold"
@@ -107,6 +119,13 @@ export default function PeriodCard({
               </option>
             ))}
           </select>
+          {availabilityReady && (
+            <p className={`mt-1 text-xs font-semibold ${
+              thanaphongIsScheduled ? "text-green-600" : "text-slate-700"
+            }`}>
+              คุณครูธนพงษ์: {thanaphongIsScheduled ? "มีคาบสอน (ไม่ว่าง)" : "ว่าง"}
+            </p>
+          )}
           <p className="mt-1 text-xs text-slate-500">
             {availabilityReady
               ? `พบครูว่าง ${teacherList.length} คน`
