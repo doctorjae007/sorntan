@@ -48,13 +48,17 @@ export default function FormPage({ onSubmit }) {
     const grouped = new Map();
     assignments.forEach((item) => {
       const current = grouped.get(item.teacher) || [];
-      current.push(item.period);
+      current.push({ period: item.period, level: item.level });
       grouped.set(item.teacher, current);
     });
 
-    return Array.from(grouped, ([teacher, teacherPeriods]) => ({
+    return Array.from(grouped, ([teacher, teacherAssignments]) => ({
       teacher,
-      periods: [...new Set(teacherPeriods)].sort((a, b) => Number(a) - Number(b)),
+      assignments: Array.from(
+        new Map(
+          teacherAssignments.map((item) => [`${item.period}|${item.level}`, item])
+        ).values()
+      ).sort((a, b) => Number(a.period) - Number(b.period)),
     }));
   }, [assignments]);
 
@@ -287,7 +291,15 @@ export default function FormPage({ onSubmit }) {
                   >
                     <p className="font-bold text-slate-800">🧑‍🏫 {item.teacher}</p>
                     <p className="mt-1 text-sm text-slate-600">
-                      คาบที่สอนแทน <span className="font-bold">{item.periods.join(", ")}</span>
+                      {item.assignments.map((assignment) => (
+                        <span
+                          key={`${assignment.period}-${assignment.level}`}
+                          className="mr-2 inline-block"
+                        >
+                          คาบที่ <span className="font-bold">{assignment.period}</span>{" "}
+                          <span className="font-bold">{assignment.level}</span>
+                        </span>
+                      ))}
                     </p>
                   </div>
                 ))}
