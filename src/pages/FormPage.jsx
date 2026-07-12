@@ -130,10 +130,13 @@ export default function FormPage({ onSubmit }) {
     <div className="min-h-screen bg-slate-100 p-4 sm:p-6 lg:p-8">
       
       {/* Container */}
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         
         {/* Header */}
         <Header />
+
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px] gap-6 items-start">
+          <main className="min-w-0">
 
         {/* Form Section */}
         <div className="bg-white rounded-lg shadow-sm p-6 sm:p-8 mb-6 border border-slate-200">
@@ -174,7 +177,7 @@ export default function FormPage({ onSubmit }) {
             </div>
           </div>
 
-          {form.date && (
+          {false && form.date && (
             <div className="mb-6 rounded-lg border border-slate-200 bg-slate-50 p-4">
               <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                 <h2 className="font-bold text-slate-800">ครูที่สอนแทนวันนี้</h2>
@@ -249,6 +252,44 @@ export default function FormPage({ onSubmit }) {
 
         {/* Submit Button */}
         <ExportButton onClick={handleSubmit} isLoading={isLoading} />
+
+          </main>
+
+          <aside className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm lg:sticky lg:top-6">
+            <div className="flex items-center justify-between gap-3 border-b border-slate-200 pb-3">
+              <h2 className="font-bold text-slate-800">ครูที่สอนแทนวันนี้</h2>
+              {form.date && <span className="text-xs text-slate-500">{form.date}</span>}
+            </div>
+
+            {!form.date ? (
+              <p className="py-6 text-center text-sm text-slate-500">เลือกวันที่เพื่อดูรายการ</p>
+            ) : isAssignmentsLoading ? (
+              <p className="py-6 text-center text-sm text-slate-500">กำลังโหลดข้อมูล...</p>
+            ) : assignmentsByTeacher.length === 0 ? (
+              <p className="py-6 text-center text-sm text-slate-500">ยังไม่มีครูที่ถูกจัดสอนแทนในวันนี้</p>
+            ) : (
+              <div className="mt-4 space-y-3">
+                {assignmentsByTeacher.map((item, index) => (
+                  <div
+                    key={item.teacher}
+                    className={`rounded-xl border p-3 ${
+                      index % 3 === 0
+                        ? "border-sky-200 bg-sky-50"
+                        : index % 3 === 1
+                          ? "border-emerald-200 bg-emerald-50"
+                          : "border-amber-200 bg-amber-50"
+                    }`}
+                  >
+                    <p className="font-bold text-slate-800">🧑‍🏫 {item.teacher}</p>
+                    <p className="mt-1 text-sm text-slate-600">
+                      คาบที่สอนแทน <span className="font-bold">{item.periods.join(", ")}</span>
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </aside>
+        </div>
 
       </div>
     </div>
