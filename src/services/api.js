@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbw6pYjSTU3wQ3f-VZg8HxE2nlF8pyWi-MMT0zpXWS1J53tQI8FNkg87denoVh9SKgeqRw/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzJXAONghN25IHy-kLRGI9UFIgPHmpDmGqUFizW2VKPWhdm2btl9mbnn7GMZ6OQufu-Mg/exec";
 
 const encodePayload = (payload) => {
   const bytes = new TextEncoder().encode(JSON.stringify(payload));

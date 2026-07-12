@@ -110,8 +110,8 @@ function createLineMessage_(data) {
   let msg = "📚 แจ้งตารางสอนแทน\n━━━━━━━━━━━━━━\n\n";
   msg += "📅 วันที่ : " + (data.date || "-") + "\n";
   msg += "🙋 คุณครูที่ไม่มาปฏิบัติราชการ\n" + (data.absentTeacher || "-") + "\n\n━━━━━━━━━━━━━━\n";
-  (data.periods || []).forEach(function (p, index) {
-    msg += "\n🔹 รายการ " + (index + 1) + "\n\n";
+  (data.periods || []).forEach(function (p) {
+    msg += "\n";
     msg += "🕒 คาบ : " + (p.period || "-") + "\n";
     msg += "🏫 ระดับชั้น : " + (p.level || "-") + "\n";
     msg += "📖 วิชา : " + (p.subject || "-") + "\n";
