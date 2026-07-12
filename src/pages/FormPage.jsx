@@ -130,13 +130,10 @@ export default function FormPage({ onSubmit }) {
     <div className="min-h-screen bg-slate-100 p-4 sm:p-6 lg:p-8">
       
       {/* Container */}
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         
         {/* Header */}
         <Header />
-
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px] gap-6 items-start">
-          <main className="min-w-0">
 
         {/* Form Section */}
         <div className="bg-white rounded-lg shadow-sm p-6 sm:p-8 mb-6 border border-slate-200">
@@ -176,6 +173,41 @@ export default function FormPage({ onSubmit }) {
               </select>
             </div>
           </div>
+
+          {form.date && (
+            <div className="mb-6 rounded-lg border border-slate-200 bg-slate-50 p-4">
+              <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+                <h2 className="font-bold text-slate-800">ครูที่สอนแทนวันนี้</h2>
+                <span className="text-xs text-slate-500">{form.date}</span>
+              </div>
+
+              {isAssignmentsLoading ? (
+                <p className="mt-3 text-sm text-slate-500">กำลังโหลดข้อมูล...</p>
+              ) : assignmentsByTeacher.length === 0 ? (
+                <p className="mt-3 text-sm text-slate-500">ยังไม่มีครูที่ถูกจัดสอนแทนในวันนี้</p>
+              ) : (
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {assignmentsByTeacher.map((item, index) => (
+                    <div
+                      key={item.teacher}
+                      className={`rounded-full border px-4 py-2 text-sm ${
+                        index % 3 === 0
+                          ? "border-sky-200 bg-sky-50"
+                          : index % 3 === 1
+                            ? "border-emerald-200 bg-emerald-50"
+                            : "border-amber-200 bg-amber-50"
+                      }`}
+                    >
+                      <span className="font-bold text-slate-800">{item.teacher}</span>
+                      <span className="ml-2 text-slate-600">
+                        คาบที่สอนแทน {item.periods.join(", ")}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Add Period Button */}
           <button 
@@ -217,47 +249,6 @@ export default function FormPage({ onSubmit }) {
 
         {/* Submit Button */}
         <ExportButton onClick={handleSubmit} isLoading={isLoading} />
-
-          </main>
-
-          <aside className="bg-white rounded-lg shadow-sm border border-slate-200 p-5 lg:sticky lg:top-6">
-            <h2 className="text-lg font-bold text-slate-800">ครูที่สอนแทนวันนี้</h2>
-            <p className="text-sm text-slate-500 mt-1 mb-4">
-              {form.date || "กรุณาเลือกวันที่"}
-            </p>
-
-            {isAssignmentsLoading ? (
-              <p className="text-sm text-slate-500 py-4">กำลังโหลดข้อมูล...</p>
-            ) : assignmentsByTeacher.length === 0 ? (
-              <div className="border border-dashed border-slate-300 rounded-md p-4 text-sm text-slate-500 text-center">
-                {form.date ? "ยังไม่มีครูที่ถูกจัดสอนแทนในวันนี้" : "เลือกวันที่เพื่อดูรายการ"}
-              </div>
-            ) : (
-              <div className="space-y-3">
-                {assignmentsByTeacher.map((item, index) => (
-                  <div
-                    key={item.teacher}
-                    className={`rounded-xl border p-4 ${
-                      index % 3 === 0
-                        ? "border-sky-200 bg-sky-50"
-                        : index % 3 === 1
-                          ? "border-emerald-200 bg-emerald-50"
-                          : "border-amber-200 bg-amber-50"
-                    }`}
-                  >
-                    <p className="font-bold text-slate-800">👩‍🏫 {item.teacher}</p>
-                    <p className="mt-2 text-sm text-slate-600">
-                      คาบที่สอนแทน
-                      <span className="ml-2 font-bold text-slate-800">
-                        {item.periods.join(", ")}
-                      </span>
-                    </p>
-                  </div>
-                ))}
-              </div>
-            )}
-          </aside>
-        </div>
 
       </div>
     </div>
