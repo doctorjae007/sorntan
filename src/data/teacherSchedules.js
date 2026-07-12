@@ -32,6 +32,7 @@ export function getAvailableTeachers(teacherList, date, periodValue, absentTeach
   const day = getDayKey(date);
   return teacherList.filter((teacher) => {
     if (teacher === absentTeacher) return false;
+    if (teacher === "คุณครูธนพงษ์") return true;
     return !(teacherSchedules[teacher]?.[day] ?? []).includes(period);
   });
 }
