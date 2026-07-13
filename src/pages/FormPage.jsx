@@ -7,22 +7,22 @@ import { getSubstituteAssignments, submitFormData } from "../services/api";
 import { getAvailableTeachers, getTeacherLessons, isTeacherScheduled } from "../data/teacherSchedules";
 
 const teacherCardStyles = [
-  { emoji: "👩🏻‍🏫", avatar: "bg-rose-100", accent: "bg-rose-400" },
-  { emoji: "🧑🏻‍🏫", avatar: "bg-sky-100", accent: "bg-sky-400" },
-  { emoji: "👩🏽‍🏫", avatar: "bg-amber-100", accent: "bg-amber-400" },
-  { emoji: "👨🏻‍🏫", avatar: "bg-emerald-100", accent: "bg-emerald-400" },
-  { emoji: "👩🏼‍🏫", avatar: "bg-violet-100", accent: "bg-violet-400" },
-  { emoji: "🧑🏽‍🏫", avatar: "bg-orange-100", accent: "bg-orange-400" },
-  { emoji: "👨🏽‍🏫", avatar: "bg-cyan-100", accent: "bg-cyan-400" },
-  { emoji: "👩🏾‍🏫", avatar: "bg-fuchsia-100", accent: "bg-fuchsia-400" },
-  { emoji: "🧑🏼‍🏫", avatar: "bg-lime-100", accent: "bg-lime-400" },
-  { emoji: "👨🏾‍🏫", avatar: "bg-teal-100", accent: "bg-teal-400" },
-  { emoji: "👩🏻‍💼", avatar: "bg-pink-100", accent: "bg-pink-400" },
-  { emoji: "🧑🏾‍💼", avatar: "bg-indigo-100", accent: "bg-indigo-400" },
-  { emoji: "👨🏼‍💼", avatar: "bg-yellow-100", accent: "bg-yellow-400" },
-  { emoji: "👩🏽‍💼", avatar: "bg-red-100", accent: "bg-red-400" },
-  { emoji: "🧑🏻‍💼", avatar: "bg-blue-100", accent: "bg-blue-400" },
-  { emoji: "👨🏿‍🏫", avatar: "bg-green-100", accent: "bg-green-400" },
+  { emoji: "😊", avatar: "bg-rose-100", accent: "bg-rose-400" },
+  { emoji: "😄", avatar: "bg-sky-100", accent: "bg-sky-400" },
+  { emoji: "🙂", avatar: "bg-amber-100", accent: "bg-amber-400" },
+  { emoji: "😁", avatar: "bg-emerald-100", accent: "bg-emerald-400" },
+  { emoji: "🥰", avatar: "bg-violet-100", accent: "bg-violet-400" },
+  { emoji: "😎", avatar: "bg-orange-100", accent: "bg-orange-400" },
+  { emoji: "🤗", avatar: "bg-cyan-100", accent: "bg-cyan-400" },
+  { emoji: "😇", avatar: "bg-fuchsia-100", accent: "bg-fuchsia-400" },
+  { emoji: "😃", avatar: "bg-lime-100", accent: "bg-lime-400" },
+  { emoji: "😉", avatar: "bg-teal-100", accent: "bg-teal-400" },
+  { emoji: "😌", avatar: "bg-pink-100", accent: "bg-pink-400" },
+  { emoji: "🤩", avatar: "bg-indigo-100", accent: "bg-indigo-400" },
+  { emoji: "😺", avatar: "bg-yellow-100", accent: "bg-yellow-400" },
+  { emoji: "😸", avatar: "bg-red-100", accent: "bg-red-400" },
+  { emoji: "🥳", avatar: "bg-blue-100", accent: "bg-blue-400" },
+  { emoji: "😀", avatar: "bg-green-100", accent: "bg-green-400" },
 ];
 
 export default function FormPage({ onSubmit }) {
