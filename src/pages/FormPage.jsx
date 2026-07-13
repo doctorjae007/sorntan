@@ -64,6 +64,7 @@ export default function FormPage({ onSubmit }) {
   const [assignments, setAssignments] = useState([]);
   const [isAssignmentsLoading, setIsAssignmentsLoading] = useState(false);
   const [isSharing, setIsSharing] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
   const shareCardRef = useRef(null);
 
   const assignmentsByTeacher = useMemo(() => {
@@ -152,18 +153,22 @@ export default function FormPage({ onSubmit }) {
     }
   };
 
+  const createCardBlob = async () => {
+    const blob = await toBlob(shareCardRef.current, {
+      backgroundColor: "#ffffff",
+      cacheBust: true,
+      pixelRatio: 2,
+    });
+    if (!blob) throw new Error("Unable to create image");
+    return blob;
+  };
+
   const handleShareCard = async () => {
     if (!shareCardRef.current || !form.date || assignmentsByTeacher.length === 0) return;
 
     setIsSharing(true);
     try {
-      const blob = await toBlob(shareCardRef.current, {
-        backgroundColor: "#ffffff",
-        cacheBust: true,
-        pixelRatio: 2,
-      });
-      if (!blob) throw new Error("Unable to create image");
-
+      const blob = await createCardBlob();
       const filename = `substitute-teachers-${form.date}.png`;
       const file = new File([blob], filename, { type: "image/png" });
 
@@ -173,14 +178,7 @@ export default function FormPage({ onSubmit }) {
           text: `สรุปการจัดครูสอนแทน วันที่ ${form.date}`,
           files: [file],
         });
-      } else {
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = filename;
-        link.click();
-        URL.revokeObjectURL(url);
-      }
+      } else alert("อุปกรณ์นี้ไม่รองรับการแชร์ไฟล์ กรุณาใช้ปุ่มดาวน์โหลด PNG");
     } catch (error) {
       if (error?.name !== "AbortError") {
         console.error("Share card error:", error);
@@ -188,6 +186,26 @@ export default function FormPage({ onSubmit }) {
       }
     } finally {
       setIsSharing(false);
+    }
+  };
+
+  const handleDownloadCard = async () => {
+    if (!shareCardRef.current || !form.date || assignmentsByTeacher.length === 0) return;
+
+    setIsDownloading(true);
+    try {
+      const blob = await createCardBlob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `substitute-teachers-${form.date}.png`;
+      link.click();
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Download card error:", error);
+      alert("ไม่สามารถดาวน์โหลดรูปได้ กรุณาลองใหม่อีกครั้ง");
+    } finally {
+      setIsDownloading(false);
     }
   };
 
@@ -407,17 +425,28 @@ export default function FormPage({ onSubmit }) {
             </div>
 
             <div className="border-t border-slate-200 bg-slate-50 p-4">
-              <button
-                type="button"
-                onClick={handleShareCard}
-                disabled={!form.date || assignmentsByTeacher.length === 0 || isSharing}
-                className="flex w-full items-center justify-center gap-2 rounded-md bg-slate-800 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-slate-900 disabled:cursor-not-allowed disabled:bg-slate-300"
-              >
-                <span aria-hidden="true">↗</span>
-                {isSharing ? "กำลังสร้างรูป..." : "แชร์การ์ดสรุป"}
-              </button>
+              <div className="grid grid-cols-2 gap-2">
+                <button
+                  type="button"
+                  onClick={handleShareCard}
+                  disabled={!form.date || assignmentsByTeacher.length === 0 || isSharing || isDownloading}
+                  className="flex items-center justify-center gap-2 rounded-md bg-slate-800 px-3 py-2.5 text-sm font-bold text-white transition hover:bg-slate-900 disabled:cursor-not-allowed disabled:bg-slate-300"
+                >
+                  <span aria-hidden="true">↗</span>
+                  {isSharing ? "กำลังสร้าง..." : "แชร์"}
+                </button>
+                <button
+                  type="button"
+                  onClick={handleDownloadCard}
+                  disabled={!form.date || assignmentsByTeacher.length === 0 || isSharing || isDownloading}
+                  className="flex items-center justify-center gap-2 rounded-md border border-slate-300 bg-white px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-400"
+                >
+                  <span aria-hidden="true">↓</span>
+                  {isDownloading ? "กำลังบันทึก..." : "ดาวน์โหลด"}
+                </button>
+              </div>
               <p className="mt-2 text-center text-xs text-slate-500">
-                หากอุปกรณ์ไม่รองรับการแชร์ ระบบจะบันทึกเป็นไฟล์ PNG
+                ดาวน์โหลดเป็นไฟล์ PNG หรือแชร์ผ่านแอปในอุปกรณ์
               </p>
             </div>
           </aside>
