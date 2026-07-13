@@ -159,10 +159,10 @@ export default function FormPage({ onSubmit }) {
     const previousCardWidth = card.style.width;
     const previousGridStyles = assignmentGrid?.getAttribute("style");
 
-    card.style.width = "1200px";
+    card.style.width = "900px";
     if (assignmentGrid) {
       assignmentGrid.style.display = "grid";
-      assignmentGrid.style.gridTemplateColumns = "repeat(4, minmax(0, 1fr))";
+      assignmentGrid.style.gridTemplateColumns = "repeat(3, minmax(0, 1fr))";
       assignmentGrid.style.gap = "12px";
     }
     await new Promise((resolve) => requestAnimationFrame(resolve));
@@ -172,7 +172,7 @@ export default function FormPage({ onSubmit }) {
         backgroundColor: "#ffffff",
         cacheBust: true,
         pixelRatio: 2,
-        width: 1200,
+        width: 900,
       });
       if (!blob) throw new Error("Unable to create image");
       return blob;
