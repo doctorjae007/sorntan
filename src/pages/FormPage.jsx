@@ -65,6 +65,7 @@ export default function FormPage({ onSubmit }) {
   const [isAssignmentsLoading, setIsAssignmentsLoading] = useState(false);
   const [isSharing, setIsSharing] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
+  const [isExportLayout, setIsExportLayout] = useState(false);
   const shareCardRef = useRef(null);
 
   const assignmentsByTeacher = useMemo(() => {
@@ -154,13 +155,20 @@ export default function FormPage({ onSubmit }) {
   };
 
   const createCardBlob = async () => {
-    const blob = await toBlob(shareCardRef.current, {
-      backgroundColor: "#ffffff",
-      cacheBust: true,
-      pixelRatio: 2,
-    });
-    if (!blob) throw new Error("Unable to create image");
-    return blob;
+    setIsExportLayout(true);
+    await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+
+    try {
+      const blob = await toBlob(shareCardRef.current, {
+        backgroundColor: "#ffffff",
+        cacheBust: true,
+        pixelRatio: 2,
+      });
+      if (!blob) throw new Error("Unable to create image");
+      return blob;
+    } finally {
+      setIsExportLayout(false);
+    }
   };
 
   const handleShareCard = async () => {
@@ -344,7 +352,10 @@ export default function FormPage({ onSubmit }) {
           </main>
 
           <aside className="overflow-hidden rounded-lg border border-slate-300 bg-white shadow-sm lg:sticky lg:top-6">
-            <div ref={shareCardRef} className="bg-white">
+            <div
+              ref={shareCardRef}
+              className={`bg-white ${isExportLayout ? "w-[900px]" : "w-full"}`}
+            >
             <div className="border-b border-slate-700 bg-slate-800 px-5 py-5 text-white">
               <div className="flex items-start justify-between gap-3">
                 <div>
@@ -384,6 +395,7 @@ export default function FormPage({ onSubmit }) {
                     {assignmentsByTeacher.length} คน
                   </span>
                 </div>
+                <div className={isExportLayout ? "grid grid-cols-3 gap-3" : "space-y-3"}>
                 {assignmentsByTeacher.map((item, index) => {
                   const cardStyle = teacherCardStyles[index % teacherCardStyles.length];
                   return (
@@ -419,6 +431,7 @@ export default function FormPage({ onSubmit }) {
                   </div>
                   );
                 })}
+                </div>
               </div>
             )}
             </div>
