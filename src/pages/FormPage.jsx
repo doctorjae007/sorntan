@@ -65,14 +65,13 @@ export default function FormPage({ onSubmit }) {
   const [isAssignmentsLoading, setIsAssignmentsLoading] = useState(false);
   const [isSharing, setIsSharing] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
-  const [isExportLayout, setIsExportLayout] = useState(false);
   const shareCardRef = useRef(null);
 
   const assignmentsByTeacher = useMemo(() => {
     const grouped = new Map();
     assignments.forEach((item) => {
       const current = grouped.get(item.teacher) || [];
-      current.push({ period: item.period, level: item.level });
+      current.push({ period: item.period, level: item.level, subject: item.subject });
       grouped.set(item.teacher, current);
     });
 
@@ -80,7 +79,7 @@ export default function FormPage({ onSubmit }) {
       teacher,
       assignments: Array.from(
         new Map(
-          teacherAssignments.map((item) => [`${item.period}|${item.level}`, item])
+          teacherAssignments.map((item) => [`${item.period}|${item.level}|${item.subject || ""}`, item])
         ).values()
       ).sort((a, b) => Number(a.period) - Number(b.period)),
     }));
@@ -155,19 +154,34 @@ export default function FormPage({ onSubmit }) {
   };
 
   const createCardBlob = async () => {
-    setIsExportLayout(true);
-    await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    const card = shareCardRef.current;
+    const assignmentGrid = card.querySelector("[data-assignment-grid]");
+    const previousCardWidth = card.style.width;
+    const previousGridStyles = assignmentGrid?.getAttribute("style");
+
+    card.style.width = "1200px";
+    if (assignmentGrid) {
+      assignmentGrid.style.display = "grid";
+      assignmentGrid.style.gridTemplateColumns = "repeat(4, minmax(0, 1fr))";
+      assignmentGrid.style.gap = "12px";
+    }
+    await new Promise((resolve) => requestAnimationFrame(resolve));
 
     try {
-      const blob = await toBlob(shareCardRef.current, {
+      const blob = await toBlob(card, {
         backgroundColor: "#ffffff",
         cacheBust: true,
         pixelRatio: 2,
+        width: 1200,
       });
       if (!blob) throw new Error("Unable to create image");
       return blob;
     } finally {
-      setIsExportLayout(false);
+      card.style.width = previousCardWidth;
+      if (assignmentGrid) {
+        if (previousGridStyles === null) assignmentGrid.removeAttribute("style");
+        else assignmentGrid.setAttribute("style", previousGridStyles);
+      }
     }
   };
 
@@ -354,7 +368,7 @@ export default function FormPage({ onSubmit }) {
           <aside className="overflow-hidden rounded-lg border border-slate-300 bg-white shadow-sm lg:sticky lg:top-6">
             <div
               ref={shareCardRef}
-              className={`bg-white ${isExportLayout ? "w-[900px]" : "w-full"}`}
+              className="w-full bg-white"
             >
             <div className="border-b border-slate-700 bg-slate-800 px-5 py-5 text-white">
               <div className="flex items-start justify-between gap-3">
@@ -395,7 +409,7 @@ export default function FormPage({ onSubmit }) {
                     {assignmentsByTeacher.length} คน
                   </span>
                 </div>
-                <div className={isExportLayout ? "grid grid-cols-3 gap-3" : "space-y-3"}>
+                <div data-assignment-grid className="space-y-3">
                 {assignmentsByTeacher.map((item, index) => {
                   const cardStyle = teacherCardStyles[index % teacherCardStyles.length];
                   return (
@@ -420,11 +434,13 @@ export default function FormPage({ onSubmit }) {
                     <div className="mt-3 grid gap-1.5">
                       {item.assignments.map((assignment) => (
                         <div
-                          key={`${assignment.period}-${assignment.level}`}
+                          key={`${assignment.period}-${assignment.level}-${assignment.subject || ""}`}
                           className="flex items-center justify-between rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-xs"
                         >
                           <span className="text-slate-500">คาบที่ <strong className="text-slate-800">{assignment.period}</strong></span>
-                          <span className="rounded-md bg-white px-2 py-0.5 font-bold text-slate-700 shadow-sm">ชั้น {assignment.level}</span>
+                          <span className="ml-2 truncate rounded-md bg-white px-2 py-0.5 font-bold text-slate-700 shadow-sm">
+                            ชั้น {assignment.level}{assignment.subject ? ` • ${assignment.subject}` : ""}
+                          </span>
                         </div>
                       ))}
                     </div>
