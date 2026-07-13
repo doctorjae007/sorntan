@@ -6,6 +6,25 @@ import ExportButton from "../components/ExportButton";
 import { getSubstituteAssignments, submitFormData } from "../services/api";
 import { getAvailableTeachers, getTeacherLessons, isTeacherScheduled } from "../data/teacherSchedules";
 
+const teacherCardStyles = [
+  { emoji: "👩🏻‍🏫", avatar: "bg-rose-100", accent: "bg-rose-400" },
+  { emoji: "🧑🏻‍🏫", avatar: "bg-sky-100", accent: "bg-sky-400" },
+  { emoji: "👩🏽‍🏫", avatar: "bg-amber-100", accent: "bg-amber-400" },
+  { emoji: "👨🏻‍🏫", avatar: "bg-emerald-100", accent: "bg-emerald-400" },
+  { emoji: "👩🏼‍🏫", avatar: "bg-violet-100", accent: "bg-violet-400" },
+  { emoji: "🧑🏽‍🏫", avatar: "bg-orange-100", accent: "bg-orange-400" },
+  { emoji: "👨🏽‍🏫", avatar: "bg-cyan-100", accent: "bg-cyan-400" },
+  { emoji: "👩🏾‍🏫", avatar: "bg-fuchsia-100", accent: "bg-fuchsia-400" },
+  { emoji: "🧑🏼‍🏫", avatar: "bg-lime-100", accent: "bg-lime-400" },
+  { emoji: "👨🏾‍🏫", avatar: "bg-teal-100", accent: "bg-teal-400" },
+  { emoji: "👩🏻‍💼", avatar: "bg-pink-100", accent: "bg-pink-400" },
+  { emoji: "🧑🏾‍💼", avatar: "bg-indigo-100", accent: "bg-indigo-400" },
+  { emoji: "👨🏼‍💼", avatar: "bg-yellow-100", accent: "bg-yellow-400" },
+  { emoji: "👩🏽‍💼", avatar: "bg-red-100", accent: "bg-red-400" },
+  { emoji: "🧑🏻‍💼", avatar: "bg-blue-100", accent: "bg-blue-400" },
+  { emoji: "👨🏿‍🏫", avatar: "bg-green-100", accent: "bg-green-400" },
+];
+
 export default function FormPage({ onSubmit }) {
   const teacherList = [
     "คุณครูนัทลียา",
@@ -347,31 +366,41 @@ export default function FormPage({ onSubmit }) {
                     {assignmentsByTeacher.length} คน
                   </span>
                 </div>
-                {assignmentsByTeacher.map((item) => (
+                {assignmentsByTeacher.map((item, index) => {
+                  const cardStyle = teacherCardStyles[index % teacherCardStyles.length];
+                  return (
                   <div
                     key={item.teacher}
-                    className="relative overflow-hidden rounded-md border border-slate-200 bg-white p-4"
+                    className="relative overflow-hidden rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm"
                   >
-                    <div className="absolute inset-y-0 left-0 w-1 bg-slate-700" />
-                    <p className="flex items-center gap-2 font-bold text-slate-800">
-                      <span className="flex h-8 w-8 items-center justify-center rounded-md bg-slate-100 text-base">🧑‍🏫</span>
-                      {item.teacher}
-                    </p>
-                    <div className="mt-3 flex flex-wrap gap-1.5">
+                    <div className={`absolute inset-y-0 left-0 w-1 ${cardStyle.accent}`} />
+                    <div className="flex items-center gap-3">
+                      <span
+                        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-xl ${cardStyle.avatar}`}
+                        role="img"
+                        aria-label={`รูปแทน ${item.teacher}`}
+                      >
+                        {cardStyle.emoji}
+                      </span>
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-bold text-slate-800">{item.teacher}</p>
+                        <p className="mt-0.5 text-xs text-slate-500">สอนแทน {item.assignments.length} คาบ</p>
+                      </div>
+                    </div>
+                    <div className="mt-3 grid gap-1.5">
                       {item.assignments.map((assignment) => (
-                        <span
+                        <div
                           key={`${assignment.period}-${assignment.level}`}
-                          className="inline-flex items-center gap-1 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-xs text-slate-600"
+                          className="flex items-center justify-between rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-xs"
                         >
-                          <span>คาบที่</span>
-                          <span className="font-extrabold text-slate-800">{assignment.period}</span>
-                          <span className="text-slate-300">•</span>
-                          <span className="font-bold text-slate-700">{assignment.level}</span>
-                        </span>
+                          <span className="text-slate-500">คาบที่ <strong className="text-slate-800">{assignment.period}</strong></span>
+                          <span className="rounded-md bg-white px-2 py-0.5 font-bold text-slate-700 shadow-sm">ชั้น {assignment.level}</span>
+                        </div>
                       ))}
                     </div>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             )}
             </div>
