@@ -231,6 +231,31 @@ export default function FormPage({ onSubmit }) {
     }
   };
 
+  const getTeacherLoad = (teacher, currentPeriodIndex) => {
+    const regularPeriods = new Set(
+      getTeacherLessons(teacher, form.date).map((lesson) => String(lesson.period))
+    );
+    const substitutePeriods = new Set();
+
+    assignments.forEach((assignment) => {
+      if (assignment.teacher === teacher) {
+        substitutePeriods.add(String(assignment.period));
+      }
+    });
+
+    periods.forEach((item, itemIndex) => {
+      if (itemIndex !== currentPeriodIndex && item.substituteTeacher === teacher && item.period) {
+        substitutePeriods.add(String(item.period));
+      }
+    });
+
+    return {
+      regular: regularPeriods.size,
+      substitute: substitutePeriods.size,
+      total: regularPeriods.size + substitutePeriods.size,
+    };
+  };
+
   return (
     <div className="min-h-screen bg-slate-100 p-4 sm:p-6 lg:p-8">
       
@@ -346,6 +371,9 @@ export default function FormPage({ onSubmit }) {
                   form.date,
                   p.period,
                   form.absentTeacher
+                )}
+                teacherLoadByName={Object.fromEntries(
+                  teacherList.map((teacher) => [teacher, getTeacherLoad(teacher, index)])
                 )}
                 availabilityReady={Boolean(form.date && p.period)}
                 thanaphongIsScheduled={isTeacherScheduled(

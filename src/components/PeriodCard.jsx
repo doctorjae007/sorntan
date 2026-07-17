@@ -4,6 +4,7 @@ export default function PeriodCard({
   levelList, 
   subjectList, 
   teacherList, 
+  teacherLoadByName,
   availabilityReady,
   thanaphongIsScheduled,
   onRemove, 
@@ -99,25 +100,28 @@ export default function PeriodCard({
             className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:border-slate-700 focus:ring-2 focus:ring-slate-200 transition bg-white text-sm"
           >
             <option value="">-- เลือก --</option>
-            {teacherList.map((t, i) => (
-              <option
-                key={i}
-                value={t}
-                style={{
-                  color:
+            {teacherList.map((t, i) => {
+              const load = teacherLoadByName[t] || { regular: 0, substitute: 0, total: 0 };
+              return (
+                <option
+                  key={i}
+                  value={t}
+                  style={{
+                    color:
+                      t === "คุณครูธนพงษ์" && thanaphongIsScheduled
+                        ? "#16a34a"
+                        : "#000000",
+                  }}
+                  className={
                     t === "คุณครูธนพงษ์" && thanaphongIsScheduled
-                      ? "#16a34a"
-                      : "#000000",
-                }}
-                className={
-                  t === "คุณครูธนพงษ์" && thanaphongIsScheduled
-                    ? "text-green-600 font-semibold"
-                    : "text-black"
-                }
-              >
-                {t}
-              </option>
-            ))}
+                      ? "text-green-600 font-semibold"
+                      : "text-black"
+                  }
+                >
+                  {`${t} — มีสอนแล้ว ${load.total} คาบ (ประจำ ${load.regular} + สอนแทน ${load.substitute})`}
+                </option>
+              );
+            })}
           </select>
           {availabilityReady && (
             <p className={`mt-1 text-xs font-semibold ${
@@ -131,6 +135,11 @@ export default function PeriodCard({
               ? `พบครูว่าง ${teacherList.length} คน`
               : "เลือกวันที่และคาบเพื่อค้นหาครูที่ว่าง"}
           </p>
+          {availabilityReady && (
+            <p className="mt-1 text-xs text-slate-500">
+              จำนวนคาบรวมคาบสอนประจำและคาบสอนแทนที่จัดไว้แล้ว โดยยังไม่รวมคาบนี้
+            </p>
+          )}
         </div>
       </div>
     </div>
