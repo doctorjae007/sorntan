@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import PeriodCard from "../components/PeriodCard";
 import ExportButton from "../components/ExportButton";
 import { getSubstituteAssignments, submitFormData } from "../services/api";
+import { exportToPDF } from "../services/export";
 import { getAvailableTeachers, getTeacherLessons, isTeacherScheduled } from "../data/teacherSchedules";
 
 const teacherCardStyles = [
@@ -62,6 +63,7 @@ export default function FormPage({ onSubmit }) {
   const [periods, setPeriods] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [assignments, setAssignments] = useState([]);
+  const [archivedReports, setArchivedReports] = useState([]);
   const [isAssignmentsLoading, setIsAssignmentsLoading] = useState(false);
   const [isSharing, setIsSharing] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
@@ -85,18 +87,45 @@ export default function FormPage({ onSubmit }) {
     }));
   }, [assignments]);
 
+  const downloadableReports = useMemo(() => {
+    if (archivedReports.length > 0) return archivedReports;
+
+    const grouped = new Map();
+    assignments.forEach((item) => {
+      const absentTeacher = item.absentTeacher || "-";
+      const periods = grouped.get(absentTeacher) || [];
+      periods.push({
+        period: item.period,
+        level: item.level,
+        subject: item.subject,
+        substituteTeacher: item.teacher,
+      });
+      grouped.set(absentTeacher, periods);
+    });
+
+    return Array.from(grouped, ([absentTeacher, reportPeriods], index) => ({
+      id: `legacy-${index}`,
+      date: form.date,
+      absentTeacher,
+      periods: reportPeriods,
+    }));
+  }, [archivedReports, assignments, form.date]);
+
   useEffect(() => {
     let active = true;
     if (!form.date) {
       setAssignments([]);
+      setArchivedReports([]);
       return undefined;
     }
 
     setAssignments([]);
+    setArchivedReports([]);
     setIsAssignmentsLoading(true);
     getSubstituteAssignments(form.date).then((result) => {
       if (!active) return;
       setAssignments(result.success ? result.assignments : []);
+      setArchivedReports(result.success && Array.isArray(result.reports) ? result.reports : []);
       setIsAssignmentsLoading(false);
     });
 
@@ -482,6 +511,24 @@ export default function FormPage({ onSubmit }) {
             </div>
 
             <div className="border-t border-slate-200 bg-slate-50 p-4">
+              {downloadableReports.length > 0 && (
+                <div className="mb-3 rounded-md border border-slate-200 bg-white p-3">
+                  <p className="mb-2 text-xs font-bold text-slate-600">PDF ย้อนหลัง</p>
+                  <div className="space-y-2">
+                    {downloadableReports.map((report, index) => (
+                      <button
+                        key={report.id || `${report.absentTeacher}-${index}`}
+                        type="button"
+                        onClick={() => exportToPDF(report, `report_${form.date}_${index + 1}.pdf`)}
+                        className="flex w-full items-center justify-between gap-3 rounded-md border border-slate-300 bg-white px-3 py-2 text-left text-xs font-bold text-slate-700 transition hover:border-slate-500 hover:bg-slate-50"
+                      >
+                        <span className="truncate">{report.absentTeacher}</span>
+                        <span className="shrink-0 text-slate-500">ดาวน์โหลด PDF</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
               <div className="grid grid-cols-2 gap-2">
                 <button
                   type="button"

@@ -51,18 +51,26 @@ function saveSubstitution_(data) {
 }
 
 function listAssignments_(date) {
-  if (!date) return { success: true, assignments: [] };
+  if (!date) return { success: true, assignments: [], reports: [] };
 
   const sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName(SHEET_NAME);
   if (!sheet) throw new Error("Sheet not found: " + SHEET_NAME);
 
   const assignments = [];
+  const reports = [];
   const lastRow = sheet.getLastRow();
   if (lastRow >= 1) {
-    sheet.getRange(1, 2, lastRow, 1).getDisplayValues().forEach(function (row) {
+    sheet.getRange(1, 1, lastRow, 2).getDisplayValues().forEach(function (row, index) {
       try {
-        const saved = JSON.parse(row[0]);
+        const saved = JSON.parse(row[1]);
         if (normalize_(saved.date) !== normalize_(date)) return;
+        reports.push({
+          id: String(index + 1),
+          savedAt: row[0] || "",
+          date: saved.date || date,
+          absentTeacher: saved.absentTeacher || "-",
+          periods: saved.periods || []
+        });
         (saved.periods || []).forEach(function (period) {
           assignments.push({
             teacher: period.substituteTeacher || "-",
@@ -81,7 +89,7 @@ function listAssignments_(date) {
   assignments.sort(function (a, b) {
     return Number(normalizePeriod_(a.period)) - Number(normalizePeriod_(b.period));
   });
-  return { success: true, assignments: assignments };
+  return { success: true, assignments: assignments, reports: reports };
 }
 
 function normalizePeriod_(value) {
